@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala d'estar</title>
+
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.0/dist/mindar-image-aframe.prod.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v6.1.0/dist/aframe-extras.min.js"></script>
+
+    <script src="https://unpkg.com/aframe-troika-text/dist/aframe-troika-text.min.js"></script>
+</head>
+
+<body>
+    <a-scene color-space="sRGB" cursor="rayOrigin: mouse" renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false">
+
+        <a-sky color="#7FC7D8"></a-sky>
+
+        <a-assets>
+            <a-asset-item id="scena" src="assets/models/finn_the_human.glb"></a-asset-item>
+            <a-asset-item id="BMO" src="assets/models/bmo.glb"></a-asset-item>
+            <a-asset-item id="book" src="assets/models/libraso.glb"></a-asset-item>
+        </a-assets>
+
+        <a-camera position="-0.08052 3.78786 6.34864" rotation="-20.4477 0 0" look-controls="enabled: false"
+            wasd-controls="enabled: false">
+        </a-camera>
+        <a-entity gltf-model="#scena" animation-mixer="clip: ArmatureAction"></a-entity>
+
+        <a-entity id="book-model" gltf-model="#book" scale="0.90068 0.52902 0.91002" position="-1.50685 1.44349 1.51236"
+            rotation="7.37 65.43 11.65" projectes>
+        </a-entity>
+        <a-entity troika-text="value: Contactes; 
+                       color: #000000; 
+                       fontSize: 0.5; 
+                       depth: 0.05;
+                       bevelEnabled: true;
+                       bevelSize: 0.005;
+                       align: center;" position="-0.22804 3.5 0.39989" rotation="0 0 0"
+            animation="property: position; dir: alternate; dur: 2000; easing: easeInOutSine; to: -0.22804 3.3 0.39989; loop: true;"
+            look-at="[camera]">
+        </a-entity>
+        <a-entity troika-text="value: Projectes;
+                           color: #FFFFFF;
+                           fontSize: 0.5;
+                           height: 5;
+                           depth: 20;
+                           bevelEnabled: true;
+                           bevelSize: 0.5;
+                           " position="-1.50685 2.1 1.51236" rotation="0 65 0"
+            animation="property: position; dir: alternate; dur: 2000; easing: easeInOutSine; to: -1.50685 2.25 1.51236; loop: true;"
+            look-at="[camera]">
+        </a-entity>
+
+        <a-entity gltf-model="#BMO" scale="5.5514 5.06675 7.35033" position="-0.22804 2.27229 -1.39989" contactes>
+        </a-entity>
+
+    </a-scene>
+
+    <script>
+        AFRAME.registerComponent('main', {
+            init: function () {
+                this.el.addEventListener('click', function () {
+                    window.location.href = "main.html";
+                });
+            }
+        });
+        AFRAME.registerComponent('contactes', {
+            init: function () {
+                this.el.addEventListener('click', function () {
+                    window.location.href = "contactes.html";
+                });
+            }
+        });
+        AFRAME.registerComponent('projectes', {
+            init: function () {
+                this.el.addEventListener('click', function () {
+                    window.location.href = "projectes.html";
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
